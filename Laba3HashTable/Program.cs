@@ -35,7 +35,7 @@ namespace Laba3HashTable
             MyHashTable<string, int> collection = new MyHashTable<string, int>();
             foreach (var item in _warAndWorldWords)
             {
-                collection[item] = collection.GetValueOrDefault(item, 1);
+                collection[item] = collection.GetValueOrDefault(item, 0) + 1;
             }
             var deletingWords = collection.Where(x => x.Value > 27).Select(x => x.Key).ToArray();
             foreach (var deletingWord in deletingWords)
@@ -53,7 +53,7 @@ namespace Laba3HashTable
             Dictionary<string, int> collection = new Dictionary<string, int>();
             foreach (var item in _warAndWorldWords)
             {
-                collection[item] = collection.GetValueOrDefault(item, 1);
+                collection[item] = collection.GetValueOrDefault(item, 0) + 1;
             }
             var deletingWords = collection.Where(x => x.Value > 27).Select(x => x.Key).ToArray();
             foreach (var deletingWord in deletingWords)

@@ -6,7 +6,6 @@ namespace MyHashTable
         where TKey : IComparable<TKey>
     {
         private LinkedList<KeyValuePair<TKey, TValue>>[] _items;
-        private readonly KeyValuePair<TKey, TValue> _emptyKVP = new KeyValuePair<TKey, TValue>();
         private const int _defaultCapacity = 32;
         private const double _overCapacityCoeffecient = 1.5;
         public long Count { get; private set; }
