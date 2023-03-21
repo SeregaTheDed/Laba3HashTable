@@ -6,13 +6,14 @@ namespace MyHashTable
         where TKey : IComparable<TKey>
     {
         private LinkedList<KeyValuePair<TKey, TValue>>[] _items;
-        private const int _defaultCapacity = 32;
         private const double _overCapacityCoeffecient = 1.5;
+        private readonly GetPrimeNumber getPrimeNumber;
         public long Count { get; private set; }
 
         public MyHashTable()
         {
-            _items = new LinkedList<KeyValuePair<TKey, TValue>>[_defaultCapacity];
+            getPrimeNumber = new GetPrimeNumber();
+            _items = new LinkedList<KeyValuePair<TKey, TValue>>[getPrimeNumber.GetMin()];
         }
 
         private int GetIndex(TKey key, int arrayLength)
@@ -108,9 +109,9 @@ namespace MyHashTable
 
         private void ExtendArray(ref LinkedList<KeyValuePair<TKey, TValue>>[] innerArray)
         {
-            uint newCapacity = (uint)innerArray.Length * 2;
+            int newCapacity = getPrimeNumber.Next();
             if (newCapacity > (uint)Array.MaxLength)
-                newCapacity = (uint)Array.MaxLength;
+                newCapacity = Array.MaxLength;
 
             LinkedList<KeyValuePair<TKey, TValue>>[] newArray = 
                 new LinkedList<KeyValuePair<TKey, TValue>>[newCapacity];
