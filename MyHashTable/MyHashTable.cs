@@ -128,6 +128,11 @@ namespace MyHashTable
             innerArray = newArray;
         }
 
+        public bool ContainsKey(TKey key)
+        {
+            return GetNodeByKey(key) != null;
+        }
+
         public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
         {
             foreach (var linkedList in _items)
