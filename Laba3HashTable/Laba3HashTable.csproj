@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="WarAndWorld.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="WarAndWorld.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MyHashTable\MyHashTable.csproj" />
   </ItemGroup>
 
